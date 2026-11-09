@@ -74,8 +74,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCvModal }) => {
               handleLinkClick('#home');
             }}
           >
-            <div className="w-10 h-10 rounded-lg bg-slate-900 dark:bg-blue-600 text-white font-semibold flex items-center justify-center text-sm shadow-xs group-hover:bg-blue-600 dark:group-hover:bg-blue-500 transition-colors">
-              ZT
+            <div className="w-10 h-10 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 shadow-xs group-hover:border-blue-500 transition-colors shrink-0 bg-slate-100 dark:bg-slate-800">
+              <img
+                src={USER_PROFILE.avatarUrl || '/profile.jpg'}
+                alt={USER_PROFILE.fullName}
+                className="w-full h-full object-cover object-top"
+              />
             </div>
             <div>
               <div className="font-bold text-slate-900 dark:text-white text-base leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">

@@ -58,4 +58,5 @@ export interface UserProfile {
   githubUrl: string;
   coreInterests: string[];
   availability: string;
+  avatarUrl?: string;
 }

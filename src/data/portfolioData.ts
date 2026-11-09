@@ -23,7 +23,8 @@ export const USER_PROFILE: UserProfile = {
     "AI-Assisted Software Engineering",
     "Agile Development & Continuous Learning"
   ],
-  availability: "Actively seeking Graduate Developer, Junior Software Engineer & Junior Backend / RPA roles"
+  availability: "Actively seeking Graduate Developer, Junior Software Engineer & Junior Backend / RPA roles",
+  avatarUrl: "/assets/aistudio/Polished_Tech_Office_Portrait_c672b07f.png"
 };
 
 export const SKILL_GROUPS: SkillGroup[] = [

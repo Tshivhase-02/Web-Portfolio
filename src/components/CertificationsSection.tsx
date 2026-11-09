@@ -1,47 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Award, Calendar, Building2, ExternalLink, FileText, Settings, ShieldCheck } from 'lucide-react';
+import React from 'react';
+import { Award, Calendar, Building2, ExternalLink, FileText } from 'lucide-react';
 import { CERTIFICATIONS } from '../data/portfolioData';
-import { CertificateManagerModal, StoredCertificateConfig } from './CertificateManagerModal';
 
 export const CertificationsSection: React.FC = () => {
-  const [certConfigs, setCertConfigs] = useState<StoredCertificateConfig>({});
-  const [isManagerOpen, setIsManagerOpen] = useState(false);
-
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem('zwavhudi_certificates');
-      if (stored) {
-        setCertConfigs(JSON.parse(stored));
-      }
-    } catch {
-      // Ignore storage errors
-    }
-  }, []);
-
-  const handleSaveConfig = (certId: string, url: string, isPdf: boolean, fileName?: string) => {
-    const updated = {
-      ...certConfigs,
-      [certId]: { url, isPdf, fileName },
-    };
-    setCertConfigs(updated);
-    try {
-      localStorage.setItem('zwavhudi_certificates', JSON.stringify(updated));
-    } catch {
-      // Local storage quota or security error
-    }
-  };
-
-  const handleRemoveConfig = (certId: string) => {
-    const updated = { ...certConfigs };
-    delete updated[certId];
-    setCertConfigs(updated);
-    try {
-      localStorage.setItem('zwavhudi_certificates', JSON.stringify(updated));
-    } catch {
-      // Local storage quota or security error
-    }
-  };
-
   const handleOpenCertificate = (url: string, title: string) => {
     if (url.startsWith('data:')) {
       const win = window.open();
@@ -60,40 +21,23 @@ export const CertificationsSection: React.FC = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
-          <div className="max-w-3xl">
-            <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 tracking-wider uppercase mb-1">
-              Verified Credentials
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
-              Certifications & Professional Development
-            </h2>
-            <p className="mt-2 text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-              Certifications and structured training programmes completed in workplace readiness, entrepreneurship, digital literacy, Java programming, and generative AI.
-            </p>
+        <div className="max-w-3xl mb-12">
+          <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 tracking-wider uppercase mb-1">
+            Verified Credentials
           </div>
-
-          {/* Easy Certificate Manager Trigger Button */}
-          <div className="self-start md:self-auto shrink-0">
-            <button
-              type="button"
-              onClick={() => setIsManagerOpen(true)}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-xs font-medium text-slate-700 dark:text-slate-200 shadow-2xs transition-colors"
-              title="Add or update certificate PDF files and verification URLs"
-            >
-              <Settings className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-              <span>Manage Certificate Links</span>
-            </button>
-          </div>
+          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
+            Certifications & Professional Development
+          </h2>
+          <p className="mt-2 text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+            Certifications and structured training programmes completed in workplace readiness, entrepreneurship, digital literacy, Java programming, and generative AI.
+          </p>
         </div>
 
-        {/* Certifications Grid: Simple, consistent card layout */}
+        {/* Certifications Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {CERTIFICATIONS.map((cert) => {
-            // Check if certificate has an attached document or URL in config or in static data
-            const config = certConfigs[cert.id];
-            const activeUrl = config?.url || cert.certificateUrl;
-            const isPdf = config?.isPdf !== undefined ? config.isPdf : (cert.isPdf || activeUrl?.toLowerCase().endsWith('.pdf'));
+            const activeUrl = cert.certificateUrl;
+            const isPdf = cert.isPdf || activeUrl?.toLowerCase().endsWith('.pdf');
 
             return (
               <div
@@ -136,7 +80,7 @@ export const CertificationsSection: React.FC = () => {
                   </p>
                 </div>
 
-                {/* Subtle View Certificate Link (ONLY displayed when a valid PDF or URL is available) */}
+                {/* Subtle View Certificate Link */}
                 {activeUrl && (
                   <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
                     <button
@@ -164,16 +108,6 @@ export const CertificationsSection: React.FC = () => {
         </div>
 
       </div>
-
-      {/* Easy Certificate Manager Modal */}
-      <CertificateManagerModal
-        isOpen={isManagerOpen}
-        onClose={() => setIsManagerOpen(false)}
-        certificates={CERTIFICATIONS}
-        configs={certConfigs}
-        onSaveConfig={handleSaveConfig}
-        onRemoveConfig={handleRemoveConfig}
-      />
     </section>
   );
 };

@@ -114,12 +114,23 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
           
           {/* Header */}
           <div className="border-b border-slate-200 dark:border-slate-800 pb-5">
-            <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
-              {USER_PROFILE.fullName}
-            </h1>
-            <p className="text-base font-semibold text-blue-600 dark:text-blue-400 mt-0.5">
-              {USER_PROFILE.professionalTitle}
-            </p>
+            <div className="flex items-center gap-4 mb-3">
+              <div className="w-16 h-16 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 shadow-xs shrink-0 bg-slate-100 dark:bg-slate-800">
+                <img
+                  src={USER_PROFILE.avatarUrl || '/profile.jpg'}
+                  alt={USER_PROFILE.fullName}
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
+              <div>
+                <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
+                  {USER_PROFILE.fullName}
+                </h1>
+                <p className="text-base font-semibold text-blue-600 dark:text-blue-400 mt-0.5">
+                  {USER_PROFILE.professionalTitle}
+                </p>
+              </div>
+            </div>
             <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-600 dark:text-slate-400 mt-2">
               <a
                 href={`mailto:${USER_PROFILE.email}`}
