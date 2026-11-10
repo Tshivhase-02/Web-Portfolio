@@ -52,10 +52,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCvModal, onExploreProjects }) 
             <div className="flex flex-wrap gap-2 pt-1">
               {[
                 'Java & Spring Boot',
-                'Backend REST APIs',
+                'REST APIs & JPA',
+                'Spring Security & JWT',
+                'CI/CD & Vercel',
                 'SQL & MySQL',
-                'Blue Prism & Power Automate',
-                'Modern Web Development'
+                'Blue Prism & RPA'
               ].map((interest) => (
                 <span
                   key={interest}

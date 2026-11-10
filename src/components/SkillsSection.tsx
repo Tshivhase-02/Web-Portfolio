@@ -6,19 +6,37 @@ export const SkillsSection: React.FC = () => {
   const getCategoryIcon = (category: string) => {
     switch (category) {
       case 'Programming Languages':
-        return <Code className="w-5 h-5 text-blue-600" />;
+        return <Code className="w-5 h-5 text-blue-600 dark:text-blue-400" />;
       case 'Backend Development':
-        return <Server className="w-5 h-5 text-blue-600" />;
+        return <Server className="w-5 h-5 text-blue-600 dark:text-blue-400" />;
       case 'Frontend Development':
-        return <Layout className="w-5 h-5 text-blue-600" />;
+        return <Layout className="w-5 h-5 text-blue-600 dark:text-blue-400" />;
       case 'Databases & Storage':
-        return <Database className="w-5 h-5 text-blue-600" />;
+        return <Database className="w-5 h-5 text-blue-600 dark:text-blue-400" />;
       case 'Automation & RPA':
-        return <Cpu className="w-5 h-5 text-blue-600" />;
+        return <Cpu className="w-5 h-5 text-blue-600 dark:text-blue-400" />;
       case 'Development Tools & Practices':
-        return <Wrench className="w-5 h-5 text-blue-600" />;
+      case 'Development & Deployment Tools':
+        return <Wrench className="w-5 h-5 text-blue-600 dark:text-blue-400" />;
       default:
-        return <Code className="w-5 h-5 text-blue-600" />;
+        return <Code className="w-5 h-5 text-blue-600 dark:text-blue-400" />;
+    }
+  };
+
+  const getLevelBadgeClass = (level?: string) => {
+    switch (level) {
+      case 'Primary Framework':
+      case 'Primary Database':
+      case 'Core Language':
+        return 'text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-900/60 font-semibold';
+      case 'Applied':
+        return 'text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-900/50 font-medium';
+      case 'Developing':
+        return 'text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-900/50 font-medium';
+      case 'Proficient':
+      case 'RPA Certified / Trained':
+      default:
+        return 'text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-700/60 border border-slate-200 dark:border-slate-700/60 font-medium';
     }
   };
 
@@ -76,7 +94,7 @@ export const SkillsSection: React.FC = () => {
                           {skill.name}
                         </span>
                         {skill.level && (
-                          <span className="text-[11px] font-medium text-slate-500 dark:text-slate-300 bg-slate-100 dark:bg-slate-700/60 px-2 py-0.5 rounded">
+                          <span className={`text-[11px] px-2 py-0.5 rounded ${getLevelBadgeClass(skill.level)}`}>
                             {skill.level}
                           </span>
                         )}

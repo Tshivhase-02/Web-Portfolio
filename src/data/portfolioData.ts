@@ -17,11 +17,11 @@ export const USER_PROFILE: UserProfile = {
   githubUrl: "https://github.com/Tshivhase-02",
   coreInterests: [
     "Java & Spring Boot Development",
-    "Backend & RESTful API Engineering",
-    "Robotic Process Automation (RPA)",
+    "REST API & Spring Data JPA",
+    "Spring Security & JWT Auth",
+    "CI/CD & Cloud Deployment (Vercel)",
     "Relational Database Design & MySQL",
-    "AI-Assisted Software Engineering",
-    "Agile Development & Continuous Learning"
+    "Robotic Process Automation (RPA)"
   ],
   availability: "Actively seeking Graduate Developer, Junior Software Engineer & Junior Backend / RPA roles",
   avatarUrl: "/assets/aistudio/Polished_Tech_Office_Portrait_c672b07f.png"
@@ -51,17 +51,32 @@ export const SKILL_GROUPS: SkillGroup[] = [
   },
   {
     category: "Backend Development",
-    description: "Server-side frameworks and protocols for building structured, testable APIs.",
+    description: "Server-side frameworks, database persistence, and security protocols for building enterprise-grade Java applications.",
     skills: [
       {
         name: "Spring Boot",
-        description: "Application configuration, MVC patterns, dependency injection, and service layers.",
+        description: "Application configuration, MVC architecture, dependency injection, service layers and application development.",
         level: "Primary Framework"
       },
       {
-        name: "REST APIs",
-        description: "Endpoint architecture, JSON request/response formats, HTTP methods, and status codes.",
+        name: "REST API Development",
+        description: "Endpoint design, HTTP methods, JSON request/response handling, status codes and API integration.",
         level: "Applied"
+      },
+      {
+        name: "Spring Data JPA",
+        description: "Entity mapping, repository interfaces, database operations and object-relational mapping.",
+        level: "Applied"
+      },
+      {
+        name: "Spring Security",
+        description: "Authentication, authorisation, password encryption and securing application endpoints.",
+        level: "Applied"
+      },
+      {
+        name: "JWT Authentication",
+        description: "Token-based authentication and access control.",
+        level: "Developing"
       }
     ]
   },
@@ -77,7 +92,7 @@ export const SKILL_GROUPS: SkillGroup[] = [
       {
         name: "HTML5 & CSS3",
         description: "Semantic document structure, accessible markup, Flexbox, and CSS Grid layouts.",
-        level: "Proficient"
+        level: "Applied"
       },
       {
         name: "Tailwind CSS",
@@ -109,7 +124,7 @@ export const SKILL_GROUPS: SkillGroup[] = [
       {
         name: "Blue Prism",
         description: "Process Studio, Object Studio, application modelling, work queues, and exception handling.",
-        level: "RPA Certified / Trained"
+        level: "Trained"
       },
       {
         name: "Microsoft Power Automate",
@@ -119,17 +134,33 @@ export const SKILL_GROUPS: SkillGroup[] = [
     ]
   },
   {
-    category: "Development Tools & Practices",
-    description: "Tools and modern workflows used for collaboration, version control, and productivity.",
+    category: "Development & Deployment Tools",
+    description: "Version control, build management, API documentation, and cloud CI/CD deployment pipelines.",
     skills: [
       {
         name: "Git & GitHub",
-        description: "Version control, branching strategies, commit hygiene, and pull request reviews.",
-        level: "Daily Use"
+        description: "Version control, repository management, commits and collaboration.",
+          level: "Daily Use"
       },
       {
-        name: "AI-Assisted Development Tools",
-        description: "Utilizing AI coding assistants for code optimization, debugging, documentation, and testing.",
+        name: "Swagger / OpenAPI",
+        description: "REST API documentation and endpoint testing.",
+          level: "Applied"
+      },
+      {
+        name: "Maven",
+        description: "Project dependency management and build configuration.",
+          level: "Daily Use"
+
+      },
+      {
+        name: "Vercel",
+        description: "Frontend application deployment, production builds, hosting, deployment previews, environment variable configuration and custom domain management.",
+        level: "Applied"
+      },
+      {
+        name: "CI/CD",
+        description: "Continuous Integration and Continuous Deployment, automated build and deployment workflows, GitHub integration, deployment pipelines, build validation and application release management.",
         level: "Applied"
       }
     ]
